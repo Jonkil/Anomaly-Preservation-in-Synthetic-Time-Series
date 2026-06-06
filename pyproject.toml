@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anomaly-preservation-paper"
+version = "0.1.0"
+description = "Synthetic multivariate time series with anomaly preservation evaluation"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.setuptools]
+packages = [
+    "src",
+    "src.data",
+    "src.models",
+    "src.training",
+    "src.evaluation",
+    "src.anomaly_detectors",
+    "src.utils",
+]
+package-dir = {"" = "."}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
