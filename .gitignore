@@ -1,0 +1,35 @@
+# Data (too large for Git)
+data/raw/
+data/processed/
+data/synthetic/
+
+# Artifacts
+*.pkl
+*.h5
+*.pt
+
+# Model checkpoints
+models_checkpoints/
+
+# Python environment
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# SLURM output
+output/
+
+# TSB-AD-M datasets
+# TSB-AD-M/
+
+# Logs and databases
+logs/
+*.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+results/
