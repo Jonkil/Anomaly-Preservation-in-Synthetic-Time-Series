@@ -1,0 +1,41 @@
+model: TimeVAE_v2
+framework: tsgm_patched
+architecture: vae_conv5
+
+# Per-window z-norm pipeline. The sklearn ''scaler_type'' slot stored in
+# ''best_preproc'' / ''best_params'' is unused by this profile (the data
+# is per-window z-normalised regardless). It is retained only so legacy
+# downstream tooling that reads ''scaler_type'' keeps working.
+preprocessing_profile: improved
+preprocessing:
+  max_anomaly_ratio: 0.05
+  buffer: 0
+
+# Search space. ''output_activation'' is locked to ''[linear]'' because
+# the per-window z-norm pipeline produces unbounded targets - bounded
+# heads (''sigmoid'' / ''tanh'') clip the tails of the distribution and
+# corrupt KS / Wasserstein / discriminative metrics.
+phase2_search_space:
+  latent_dim:
+    type: categorical
+    values: [16, 32, 64]
+  beta:
+    type: loguniform
+    low: 0.1
+    high: 4.0
+  reconstruction_wt:
+    type: categorical
+    values: [1.0, 3.0, 5.0, 10.0]
+  kl_anneal_epochs:
+    type: categorical
+    values: [0, 10, 25]
+  output_activation:
+    type: categorical
+    values: [linear]
+  learning_rate:
+    type: loguniform
+    low: 1.0e-4
+    high: 3.0e-3
+  batch_size:
+    type: categorical
+    values: [32, 64, 128]

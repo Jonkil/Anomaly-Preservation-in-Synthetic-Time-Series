@@ -1,0 +1,11 @@
+dataset: GHL
+domain: Sensor
+file: 040_GHL_id_9_Sensor_tr_50000_1st_92001.csv
+label_column: Label
+window_candidates:
+- 128
+- 256
+dominant_periods:
+- 7000
+- 28000
+- 35000

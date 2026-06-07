@@ -1,0 +1,12 @@
+dataset: CATSv2
+domain: Sensor
+file: 140_CATSv2_id_3_Sensor_tr_28307_1st_28407.csv
+label_column: Label
+window_candidates:
+- 128
+- 256
+- 512
+dominant_periods:
+- 3043
+- 4179
+- 70000

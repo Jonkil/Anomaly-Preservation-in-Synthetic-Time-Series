@@ -1,0 +1,47 @@
+# Global defaults for preprocessing, tuning, and tracking.
+# Paths are relative to the repository root unless absolute.
+
+data_root: "TSB-AD-M"
+processed_dir: "data/processed"
+results_dir: "results"
+logs_dir: "logs"
+
+# Final multi-seed training (not used by tuning smoke)
+final_seeds: [0, 123, 456, 789, 1011]
+
+# Optuna / MLflow
+n_trials_phase1: 8
+n_trials_phase2: 25
+optuna_storage_dir: "logs"
+mlflow_tracking_uri_default: "file:./logs/mlflow"
+
+# Optional: cap train_gen rows for faster smoke (null = use full train_gen)
+tuning_subsample_rows: null
+
+# Short train during Phase 1 (preprocessing search)
+phase1_epochs: 6
+phase1_batch_size: 128
+
+# Phase 2 - TimeVAE (model HPs with fixed preprocessing)
+phase2_epochs: 25
+phase2_batch_size: 128
+
+# Phase 2 - RTSGAN (shorter for tuning; full values in model YAML)
+phase2_rtsgan_ae_epochs: 15
+phase2_rtsgan_gan_iterations: 2000
+
+# Phase 2 - DDPM (shorter for tuning; full training uses FINAL_TRAIN_EPOCHS)
+phase2_ddpm_epochs: 15
+
+# Phase 2 - TTSGAN (shorter for tuning; full values in model YAML)
+phase2_ttsgan_iterations: 2000
+
+
+fidelity_n_samples: 1000
+
+pruner:
+  type: MedianPruner
+  n_startup_trials: 2
+  n_warmup_steps: 2
+
+random_seed_tuning: 0

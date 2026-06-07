@@ -1,0 +1,12 @@
+dataset: SWaT
+domain: Sensor
+file: 172_SWaT_id_2_Sensor_tr_23700_1st_23800.csv
+label_column: Label
+window_candidates:
+- 128
+- 256
+- 512
+dominant_periods:
+- 4242
+- 46657
+- 55989

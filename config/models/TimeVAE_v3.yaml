@@ -1,0 +1,64 @@
+model: TimeVAE_v3
+framework: pytorch_native
+architecture: interpretable_vae
+
+# Per-window z-norm pipeline. See the note in TimeVAE_v2.yaml about
+# ''scaler_type'' being a no-op slot under the improved profile.
+preprocessing_profile: improved
+preprocessing:
+  max_anomaly_ratio: 0.05
+  buffer: 0
+
+# Search space.
+#
+# - ''output_activation'' is locked to ''[linear]'' because the
+#   per-window z-norm pipeline produces unbounded targets. Bounded
+#   activations (''sigmoid'' / ''tanh'') clip the tails of the
+#   distribution, which destroys distributional fidelity. Enforced both
+#   here and at build time by ''build_timevae_v3''.
+# - ''trend_poly'' starts at 1: the level head already provides the
+#   per-window constant offset, so ''t^0'' is excluded from the trend
+#   basis. ''trend_poly == 0'' therefore means "no trend head" and is a
+#   valid (but boring) configuration.
+phase2_search_space:
+  latent_dim:
+    type: categorical
+    values: [16, 32, 64]
+  hidden_channels:
+    type: categorical
+    values:
+      - [64, 128]
+      - [64, 128, 256]
+      - [128, 256, 512]
+  trend_poly:
+    type: categorical
+    values: [1, 2, 3]
+  custom_seas_enabled:
+    type: categorical
+    values: [true, false]
+  seas_harmonics:
+    type: categorical
+    values: [3, 5]
+  use_residual_conn:
+    type: categorical
+    values: [true, false]
+  reconstruction_wt:
+    type: categorical
+    values: [1.0, 3.0, 5.0, 10.0]
+  beta:
+    type: loguniform
+    low: 0.05
+    high: 2.0
+  kl_anneal_epochs:
+    type: categorical
+    values: [0, 10, 25]
+  output_activation:
+    type: categorical
+    values: [linear]
+  learning_rate:
+    type: loguniform
+    low: 1.0e-4
+    high: 3.0e-3
+  batch_size:
+    type: categorical
+    values: [32, 64, 128]

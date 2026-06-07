@@ -1,0 +1,30 @@
+model: RTSGAN
+framework: pytorch
+
+# Fixed training defaults (overridable via env vars)
+ae_epochs: 200
+gan_iterations: 5000
+ae_batch_size: 128
+gan_batch_size: 256
+d_update: 5
+dropout: 0.0
+
+# Phase 2 search space (preprocessing fixed from Phase 1 winner)
+phase2_search_space:
+  hidden_dim:
+    type: categorical
+    values: [16, 32, 64]
+  layers:
+    type: categorical
+    values: [1, 2, 3]
+  noise_dim:
+    type: categorical
+    values: [32, 64, 128]
+  ae_lr:
+    type: loguniform
+    low: 1.0e-4
+    high: 1.0e-2
+  gan_lr:
+    type: loguniform
+    low: 1.0e-5
+    high: 1.0e-3

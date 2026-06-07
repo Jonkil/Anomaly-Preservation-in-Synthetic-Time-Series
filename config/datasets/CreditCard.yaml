@@ -1,0 +1,13 @@
+dataset: CreditCard
+domain: Finance
+file: 137_CreditCard_id_1_Finance_tr_500_1st_541.csv
+label_column: Label
+window_candidates:
+- 64
+- 128
+- 256
+- 512
+dominant_periods:
+- 3692
+- 24920
+- 49841

@@ -1,0 +1,12 @@
+dataset: PSM
+domain: Facility
+file: 115_PSM_id_1_Facility_tr_50000_1st_129872.csv
+label_column: Label
+window_candidates:
+- 128
+- 256
+- 512
+dominant_periods:
+- 1424
+- 25389
+- 38084

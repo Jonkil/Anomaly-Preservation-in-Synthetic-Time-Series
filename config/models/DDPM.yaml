@@ -1,0 +1,26 @@
+model: DDPM
+framework: tsgm
+architecture: ddpm_denoiser
+
+# Fixed diffusion defaults
+timesteps: 200
+ema: 0.999
+
+# Phase 2 search space (preprocessing fixed from Phase 1 winner)
+phase2_search_space:
+  n_filters:
+    type: categorical
+    values: [32, 64, 128]
+  n_conv_layers:
+    type: categorical
+    values: [2, 3, 4]
+  timesteps:
+    type: categorical
+    values: [100, 200, 500]
+  learning_rate:
+    type: loguniform
+    low: 1.0e-4
+    high: 1.0e-2
+  batch_size:
+    type: categorical
+    values: [32, 64, 128]

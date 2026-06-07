@@ -1,0 +1,10 @@
+dataset: OPPORTUNITY
+domain: HumanActivity
+file: 136_OPPORTUNITY_id_8_HumanActivity_tr_1495_1st_1595.csv
+label_column: Label
+window_candidates:
+- 128
+dominant_periods:
+- 2360
+- 3146
+- 3776

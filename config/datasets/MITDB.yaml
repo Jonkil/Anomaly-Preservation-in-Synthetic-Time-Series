@@ -1,0 +1,12 @@
+dataset: MITDB
+domain: Medical
+file: 021_MITDB_id_3_Medical_tr_50000_1st_57595.csv
+label_column: Label
+window_candidates:
+- 256
+- 512
+- 1024
+dominant_periods:
+- 99
+- 149
+- 298

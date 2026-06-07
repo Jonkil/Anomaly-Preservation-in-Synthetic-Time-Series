@@ -1,0 +1,19 @@
+model: TimeVAE
+framework: tsgm
+architecture: vae_conv5
+
+# Phase 2 search space (preprocessing fixed from Phase 1 winner)
+phase2_search_space:
+  latent_dim:
+    type: categorical
+    values: [8, 16, 32, 64]
+  beta:
+    type: categorical
+    values: [0.5, 1.0, 2.0]
+  learning_rate:
+    type: loguniform
+    low: 1.0e-4
+    high: 1.0e-2
+  batch_size:
+    type: categorical
+    values: [32, 64, 128]
