@@ -1,4 +1,4 @@
-# Anomaly preservation in synthetic multivariate time series
+# Beyond Fidelity: Assessing Anomaly Preservation in Synthetic Time Series Generation
 
 Pipeline code for:
 - data preprocessing
