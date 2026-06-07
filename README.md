@@ -22,7 +22,7 @@ download_zenodo.sh
 ```
 
 ## Requirements
-The computations were run on the ex3 HPC server using Nvidia GPUs and CUDA. The server access was provided by the Simula Research Lab (Oslo, Norway).
+The computations were run on the ex3 HPC server (https://www.ex3.simula.no) using Nvidia GPUs and CUDA. The server access was provided by the Simula Research Lab (Oslo, Norway).
 
 - Python 3.10+
 - CUDA 12.8 + PyTorch cu128 wheels (see `requirements.txt`)
